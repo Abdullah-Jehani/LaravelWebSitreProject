@@ -1,0 +1,21 @@
+first {routes } 
+the routes are all stored in routes/wep.php
+example of route 
+
+Route::get('/', function () { 
+    return view('welcome')  ;
+});
+
+first word (route) => its a class 
+:: => the function is to call the function get 
+'/' => is where you want to go 
+function => do some operations 
+view => is a function that showa the page 
+('welcome') => is the page that you want to render . 
+=====================================================================
+second 
+What is MVC ?
+models => represent all the data in the application 
+View => is the iterface that user sees (Html , Css) . 
+Controller => connects the interface with the data . 
+================================================================

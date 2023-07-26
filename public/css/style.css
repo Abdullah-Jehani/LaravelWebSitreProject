@@ -1,3 +1,6 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Playfair+Display&family=Poppins:wght@400;600;700&family=Roboto:wght@100&family=Silkscreen&family=Work+Sans:ital,wght@0,200;0,400;0,600;1,700&display=swap');
+
 nav a {
     padding: 2.5rem;
 }
@@ -17,4 +20,44 @@ li {
 }
 li:hover {
     background-color: #f74747;
+}
+form {
+    background: white; 
+    border: 1px solid #dddddd;
+    padding: 25px; 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px #0000000f;
+}
+form div {
+    margin: 10px; 
+}
+form input {
+   border: 1px solid #ddd;
+   border-radius: 5px; 
+   padding: 15px; 
+   font-size: 1.0rem ; 
+   font-family: 'Poppins', sans-serif;
+}
+form label {
+    display: inherit;
+    font-size: .9rem;
+    padding-bottom: 3px;
+    color: #9d9d9d;
+
+}
+form button {
+    border: 1px solid #ddd; 
+    padding: 10px 25px;
+    font-size: 1.1rem; 
+    margin: 10px 0; 
+    border-radius: 5px;
+}
+form button:hover{background-color:orange;}
+
+form button:focus{background-color:green;}
+
+.form-error {
+    margin: 0;
+    color: #f74747; 
+    font-size: .7rem;
 }

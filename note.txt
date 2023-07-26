@@ -18,4 +18,12 @@ What is MVC ?
 models => represent all the data in the application 
 View => is the iterface that user sees (Html , Css) . 
 Controller => connects the interface with the data . 
-================================================================
+================================================================ 
+
+-> and => are both operators.
+
+The difference is that => is the assign operator that is used while creating an array.
+
+For example: array(key => value, key2 => value2)
+
+And -> is the access operator. It accesses an object's value

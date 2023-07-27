@@ -27,7 +27,7 @@
     <nav>
                     <a href="{{ route('home.index') }}">Home</a>
                     <a href="{{ route('home.about') }}">About</a>
-                    <a href="{{ route('computers.index') }}">Computers</a>
+                    <a href="{{ route('computers.index') }}">Computers<a>
                     <a href="{{ route('home.contact') }}">contact</a>
                 </nav>
                 </div> 
@@ -39,6 +39,17 @@
                 <div class=" mt-6 flex justify-center">
                    <h3>{{ $computer['model']}} and its worth <strong>{{ $computer['price']}}</h3>
                 </div>
+                <a class="button-edit" href="{{route('computers.edit' , $computer->id)}}">Edit</a> 
+                <!-- the second parameter is to configure in which route id will go at  -->
+                <form style="margin: 0; padding: 0; border:none;" action="{{route('computers.destroy' , $computer->id)}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <a class="button-delete">
+                        <input style="border: none;" type="submit" value="delete">
+                    </a>  
+                   
+                </form>
+
             </div>
         </div>
        

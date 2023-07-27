@@ -62,7 +62,6 @@
                             @enderror
                         </div>
 
-
                         <div>
                             <label for="computer-price">Computer Price</label>
                             <input type="number" id="computer-price" name="computer-price" value="{{old('computer-price')}}" >

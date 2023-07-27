@@ -27,36 +27,63 @@
     <nav>
                     <a href="{{ route('home.index') }}">Home</a>
                     <a href="{{ route('home.about') }}">About</a>
-                    <a href="{{ route('computers.index') }}">Computers<a>
-                    <a href="{{ route('computers.create') }}">new Computer</a>
+                    <a href="{{ route('computers.index') }}">Computers</a>
                     <a href="{{ route('home.contact') }}">contact</a>
                 </nav>
                 </div> 
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
             <div class="max-w-7xl mx-auto p-6 lg:p-8" >
             <div class="flex justify-center pt-10 bg-red-600">
-                    <h1 class="red">Computers Page </h1>
+                    <h1 class="red pb-4">Edit a computer </h1>
                 </div>
-                <div class=" mt-6 flex justify-center">
-                    @if (count($computers) > 0)
-                <ul>
-                    @foreach ($computers as $computer)
-                    <a href="{{ route('computers.show', ['computer' => $computer['id']]) }}">
-                    <li>{{ $computer['model']}} and its worth <strong>{{ $computer['price']}}$</strong>
-                </li>
-                </a>
 
-                    @endforeach
-                    </ul>
-                    @else 
-                    <p>there is no computers to display</p>
-                    @endif
+                <div class="flex justify-center mt-8">
+                    
+                    <form action="{{route('computers.update' , ['computer' => $computer->id]
+                        )}}"
+                         method="post" class="mt-6">
+                        @csrf
+                        @method('PUT')
+                        <div>
+                            <label for="computer-model">Computer Name</label>
+                            <input type="text" id="computer-model" name="computer-model" value="{{$computer->model}}" >
+                            @error('computer-model')
+                            <div class="form-error">
+                             {{$message}} 
+                            </div>  
+                             @enderror
+                        </div>
+
+
+                        <div>
+                            <label for="computer-orign">Computer Origin</label>
+                            <input type="text" id="computer-origin" name="computer-origin" value="{{$computer->origin}}">
+                            @error('computer-origin')
+                            <div class="form-error">
+                             {{$message}} 
+                            </div>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label for="computer-price">Computer Price</label>
+                            <input type="number" id="computer-price" name="computer-price" value="{{$computer->price}}" >
+                            @error('computer-price')
+                            <div class="form-error">
+                             {{$message}} 
+                            </div>                           
+                             @enderror
+                        </div> 
+
+
+                        <div>
+                            <button type="submit">Update</button>
+                        </div>
+                    </form>
                 </div>
-                <a class="button-edit" href="{{route('computers.create')}}">Create</a> 
+               
             </div>
-          
         </div>
-    
        
     </body>
-</html>
+</html> 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\computer;
+use Illuminate\Console\View\Components\Alert;
+use PHPUnit\Framework\TestStatus\Success;
 
 class ComputerController extends Controller
 {
@@ -73,22 +75,36 @@ class ComputerController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('computers.edit' , [
+            'computer' => computer::findOrfail($id) // it will go and scearch in Db for the ID
+        ]) ; 
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+  
+    public function update(Request $request, string $computer)
     {
-        //
+        $request -> validate([
+            'computer-model' => 'required' , 
+            'computer-origin' => 'required' , 
+            'computer-price' => 'required|integer' , 
+        ]) ; 
+        $to_update= computer::findorfail($computer);
+        $to_update->model = strip_tags( $request->input('computer-model'))  ; // here we are assigning the variables we have to computer , as we use the instance $computer we get all the access to the data in our app 
+        $to_update->origin = strip_tags( $request->input('computer-origin')) ;
+        $to_update->price = strip_tags( $request->input('computer-price')) ;
+        $to_update->save() ; 
+        return redirect()->route('computers.index' , $computer) ;
+
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $computer)
     {
-        //
+        $to_delete = computer::findorfail($computer) ; 
+        $to_delete -> delete(); 
+        return redirect()->route('computers.index');
     }
 }
